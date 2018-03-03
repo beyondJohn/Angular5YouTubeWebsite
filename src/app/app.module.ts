@@ -8,6 +8,7 @@ import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalService } from './services/modal.service';
 import { ErrormodalComponent } from './errormodal/errormodal.component';
 import { ScanService } from './services/scan.service';
+import { AwayComponent } from './away/away.component';
 
 
 const appRoutes: Routes = [
@@ -15,6 +16,11 @@ const appRoutes: Routes = [
     path: 'home',
     component: HomeComponent,
     data: { title: 'Home' }
+  },
+  {
+    path: 'away',
+    component: AwayComponent,
+    data: { title: 'Away' }
   },
   {
     path: '',
@@ -27,7 +33,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    ErrormodalComponent
+    ErrormodalComponent,
+    AwayComponent
   ],
   imports: [
     BrowserModule,

@@ -1,15 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes, ActivatedRoute } from '@angular/router';
+import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { RouterModule, Routes, ActivatedRoute } from '@angular/router';
-
-import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalService } from './services/modal.service';
-import { ErrormodalComponent } from './errormodal/errormodal.component';
-import { ScanService } from './services/scan.service';
 import { AwayComponent } from './away/away.component';
+import { ErrormodalComponent } from './errormodal/errormodal.component';
+
+import { CacheFactory } from 'cachefactory';
+import { ModalService } from './services/modal.service';
+import { ScanService } from './services/scan.service';
+import { CacheService } from './services/cache.service';
+
+
 
 
 const appRoutes: Routes = [
@@ -45,7 +50,7 @@ const appRoutes: Routes = [
     ),
     NgbModule.forRoot()
   ],
-  providers: [ScanService, ModalService, NgbActiveModal],
+  providers: [ScanService, ModalService, NgbActiveModal, CacheFactory, CacheService],
   entryComponents:[ ErrormodalComponent ],
   bootstrap: [AppComponent]
 })

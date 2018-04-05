@@ -13,6 +13,7 @@ import { CacheFactory } from 'cachefactory';
 import { ModalService } from './services/modal.service';
 import { ScanService } from './services/scan.service';
 import { CacheService } from './services/cache.service';
+import { RunService } from './services/run.service';
 
 
 
@@ -50,7 +51,7 @@ const appRoutes: Routes = [
     ),
     NgbModule.forRoot()
   ],
-  providers: [ScanService, ModalService, NgbActiveModal, CacheFactory, CacheService],
+  providers: [ScanService, ModalService, NgbActiveModal, CacheFactory, CacheService, RunService],
   entryComponents:[ ErrormodalComponent ],
   bootstrap: [AppComponent]
 })

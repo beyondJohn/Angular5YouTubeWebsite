@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ScanService } from '../services/scan.service';
 import { ErrormodalComponent } from '../errormodal/errormodal.component';
 import { NgbModal, NgbActiveModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { CacheService } from '../services/cache.service';
+import { CacheFactory } from 'cachefactory';
 
 @Component({
   selector: 'app-home',
@@ -15,10 +17,20 @@ export class HomeComponent implements OnInit {
     private _scan: ScanService,
     private _activemodal: NgbActiveModal,
     private _modalService: NgbModal,
-    private _router: Router
+    private _router: Router,
+    private _cache: CacheFactory,
+    private _cacheS: CacheService
   ) { }
-
+  cache
   ngOnInit() {
+    let mycache = this._cacheS._cache;
+    
+    this.cache = mycache.exists('my-cache') ? mycache.get('my-cache')
+      : mycache.createCache('my-cache', {
+        maxAge: 60 * 60 * 1000,
+        deleteOnExpire: 'aggressive'
+      });
+      this.cache.put("homecache", "hi there, test cache from home component");
   }
 
   showmodal() {

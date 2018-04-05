@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { trigger, state, style, animate, transition, query } from '@angular/animations';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { RunService } from'./services/run.service';
 
 @Component({
   selector: 'app-root',
@@ -46,7 +47,9 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class AppComponent {
   title = 'app';
-  // change the animation state
+  constructor(private _run: RunService){
+    _run.init();
+  }
   getRouteAnimation(outlet) {
     return outlet.activatedRouteData.animation;
   }

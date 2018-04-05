@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ScanService } from '../services/scan.service';
 import { ErrormodalComponent } from '../errormodal/errormodal.component';
 
@@ -10,12 +11,16 @@ import { ErrormodalComponent } from '../errormodal/errormodal.component';
 export class AwayComponent implements OnInit {
 
   constructor(
-    private _scan: ScanService
+    private _scan: ScanService,
+    private _router: Router
   ) { }
 
   ngOnInit() {
   }
   showmodal() {
     this._scan.showError();
+  }
+  back(){
+    this._router.navigate(['/home']);
   }
 }

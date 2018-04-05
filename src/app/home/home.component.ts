@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ScanService } from '../services/scan.service';
 import { ErrormodalComponent } from '../errormodal/errormodal.component';
 import { NgbModal, NgbActiveModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
@@ -13,7 +14,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private _scan: ScanService,
     private _activemodal: NgbActiveModal,
-    private _modalService: NgbModal
+    private _modalService: NgbModal,
+    private _router: Router
   ) { }
 
   ngOnInit() {
@@ -29,6 +31,9 @@ export class HomeComponent implements OnInit {
     }, (reason) => {
 
     });;
+  }
+  back() {
+    this._router.navigate(['/away'])
   }
 
 }

@@ -3,17 +3,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, ActivatedRoute } from '@angular/router';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { YoutubeModule } from 'angularx-youtube';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AwayComponent } from './away/away.component';
 import { ErrormodalComponent } from './errormodal/errormodal.component';
+import { IndexComponent } from './index/index.component';
 
 import { CacheFactory } from 'cachefactory';
 import { ModalService } from './services/modal.service';
 import { ScanService } from './services/scan.service';
 import { CacheService } from './services/cache.service';
 import { RunService } from './services/run.service';
+
 
 
 
@@ -30,9 +33,14 @@ const appRoutes: Routes = [
     data: { title: 'Away', animation: 'away' }
   },
   {
+    path: 'index',
+    component: IndexComponent,
+    data: { title: 'Index', animation: 'index' }
+  },
+  {
     path: '',
-    component: HomeComponent,
-    data: { title: 'Home' }
+    component: IndexComponent,
+    data: { title: 'index' }
   }
 ]
 
@@ -41,7 +49,8 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     ErrormodalComponent,
-    AwayComponent
+    AwayComponent,
+    IndexComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -49,7 +58,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes,
       {enableTracing: false}
     ),
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    YoutubeModule
   ],
   providers: [ScanService, ModalService, NgbActiveModal, CacheFactory, CacheService, RunService],
   entryComponents:[ ErrormodalComponent ],

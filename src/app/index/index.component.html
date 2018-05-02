@@ -1,0 +1,21 @@
+<div id="container">
+  <header>
+    <div class="faq-bar">
+      <a href="/" class="faq-link">FAQs</a>
+    </div>
+    <div class="login">Login</div>
+    <div class="psn-bar">
+      <a href="/" class="psn-link"><img src="../../assets/images/desktop/LogoHeader.png"></a>
+    </div>
+  </header>
+  <body>
+    <div class="body-container">
+      <div class="player-container">
+              <youtube-component id="video" [videoId]="id" (ready)="onReady($event)" (change)="onChange($event)"></youtube-component>
+            
+            <button type="button" (click)="changeVid()">Change Video</button>
+      </div>
+    </div>
+  </body>
+</div>
+

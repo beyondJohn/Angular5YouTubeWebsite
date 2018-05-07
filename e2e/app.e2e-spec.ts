@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('serviceoninit App', () => {
+describe('angular5youtubewebsite App', () => {
   let page: AppPage;
 
   beforeEach(() => {

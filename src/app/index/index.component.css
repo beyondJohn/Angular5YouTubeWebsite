@@ -1,33 +1,14 @@
-.faq-bar{
-    width:100%;
-    height: 30px;
-    background-image: url("../../assets/images/desktop/FAQBackground.png");
-    text-align: center;
-    min-width: 1080px;
-}
-.faq-link{
-    color:white;
-}
-.psn-bar{
-    width:100%;
-    height: 60px;
-    background-image: url("../../assets/images/desktop/HeaderBackground.png");
-    text-align: center;
+.container{
     position: relative;
-    min-width: 1080px;
+    overflow: hidden;
 }
-.login{
+.background-container{
     position: absolute;
-    right: 10px;
-    top: 45px;
-    color:white;
-    z-index: 1;
-}
-.body-container{
-    position: relative;
     width: 100%;
     background-image: url('../../assets/images/desktop/Main_Background.jpg');
     min-height: 725px;
+    z-index: 0;
+    overflow: hidden;
 }
 .player-container{
     width: 1080px;
@@ -36,4 +17,84 @@
     background-size: cover;
     padding: 135px 210px;
     margin: auto;
+    position: relative;
 }
+.caption{
+    width: 100%;
+    margin: 0 auto;
+}
+.controls{
+    height: 40px;
+    width: 100%;
+    background-color: #303030;
+    position: relative;
+    top: -17px;
+}
+.cc{
+    color: white;
+    padding: 5px;
+}
+.ul-controls{
+    list-style-type: none;
+}
+.ul-controls li{
+    float: left;
+    padding: 7px 10px;
+}
+.volume2{
+    width:17px;
+}
+.cc2{
+    width:22px;
+}
+.sharenbg{
+    width:18px;
+}
+.info2{
+    width:8px;
+}
+.player{
+    border: 2px solid white;
+    width: 644px;
+    height: 404px;
+    position: relative;
+}
+.playerbg{
+    position: relative;
+    height:360px;
+    width:640px;
+    overflow: hidden;
+}
+.loading{
+    position: relative;
+    top: -136px;
+    left: -74px;
+}
+.loading-text{
+    position: absolute;
+    bottom: 60px;
+    color: white;
+    width:100%;
+    text-align: center;
+}
+.vranger {
+   /* margin-top: 50px;
+      transform: rotate(270deg);
+    -moz-transform: rotate(270deg); do same for other browsers if required */
+  }
+  .volume-slider{
+      display:none;
+    position: absolute;
+    padding-left: 20px;
+    bottom: 3px;
+    left: 65px;
+    z-index: 3;
+    opacity:0;
+    transition: all .7s;
+  }
+  .appear{
+    display:block;
+  }
+  .fadein{
+    opacity:1; 
+  }

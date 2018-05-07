@@ -1,3 +1,23 @@
-<div [@routerAnimation]="getRouteAnimation(route)">
-    <router-outlet #route="outlet"></router-outlet>
+<div lass="main-container">
+    <header>
+        <div class="faq-bar">
+            <a href="/" class="faq-link">FAQs</a>
+        </div>
+
+        <div class="login">
+            <i class="fa fa-user" style="color:white;"></i> Login</div>
+        <div class="psn-bar">
+            <a href="/" class="psn-link">
+                <img src="../assets/images/desktop/LogoHeader.png">
+            </a>
+        </div>
+    </header>
+    <div [@routerAnimation]="getRouteAnimation(route)">
+        <router-outlet #route="outlet"></router-outlet>
+    </div>
+    <footer>
+        <div class="footer-bar">
+            <a href="/" class="faq-link">FAQs</a>
+        </div>
+    </footer>
 </div>

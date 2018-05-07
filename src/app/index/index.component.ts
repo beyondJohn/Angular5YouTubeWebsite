@@ -24,13 +24,14 @@ export class IndexComponent implements OnInit {
       this.src = params['src'];
     });
   }
+  vidTitle;
   currentTime;
   src;
   params;
   origin: string;
   title = 'app';
   player;
-  ids: Array<string> = ['De6uAzvOx5E', '2e-yAATMjBI', 'D_JNQKlA57k'];
+  ids: Array<string> = ['D_JNQKlA57k','2e-yAATMjBI','De6uAzvOx5E'];
   currentvideoindex = 2;
   id = this.ids[2];
   playing;
@@ -63,14 +64,19 @@ export class IndexComponent implements OnInit {
         // this.player.setOption('captions', 'reload', 'true');
         // this.player.setOption('captions', 'fontSize', '3');
         this.onetime = 1;
-        document.getElementById('video').setAttribute('style', 'z-index:2; height:360px; position:absolute; top:0px; display: block;');
+        document.getElementById('video').setAttribute('class', 'video');
       }
-      console.log('ended: ',this.player.getVideoData());
+      //console.log('ended: ',this.player.getVideoData());
       // console.log("current time: ", this.player.getCurrentTime());
       // console.log("getPlayerState: ", this.player.getPlayerState());
       let playerState = this.player.getPlayerState();
       if (playerState !== 1) {// unstarted
         if (playerState === 0) {// ended
+          this.vidTitle = this.player.getVideoData()['title'];
+          document.getElementsByClassName('notification')[0].setAttribute('style','top:30px;');
+          setTimeout(()=>{
+            document.getElementsByClassName('notification')[0].setAttribute('style','top:-400px;');
+          },6000)
           checkEnded(0);
           // console.log('ended: ',this.player.getVideoData());
           this.onetime = 0;
@@ -80,6 +86,7 @@ export class IndexComponent implements OnInit {
         }
       }
       this.currentTime = this.player.getCurrentTime();
+      // console.log('ended: ',this.player.getVideoData());
     }, 3000)
   }
   onChange(event): void {
@@ -90,10 +97,12 @@ export class IndexComponent implements OnInit {
       let iframe = document.getElementsByTagName('iframe')[0];
       // iframe.setAttribute('width', '640');
       // iframe.setAttribute('height', '360');
-      iframe.setAttribute('style', 'width:640px; height:360px;');
+      
+      iframe.setAttribute('style', 'width:100%; height:100%');
+      iframe.setAttribute('class', 'video');
       iframe.setAttribute("src", src);
-      this.player.loadModule("captions");
-      this.player.loadModule("cc");
+      // this.player.loadModule("captions");
+      // this.player.loadModule("cc");
       // console.log("Unstarted");
     }
     // console.log('event.target: ',event.target.getOptions()); 
@@ -105,6 +114,7 @@ export class IndexComponent implements OnInit {
       // console.log('playing');
     }
     else if (event.data === 3) {//cued
+      this.player.setOption("captions", "fontSize", "1");
       //this.player = event.target;
       //event.target.setOption('captions', 'reload', true);
       // event.target.addEventListener('onApiChange', 'onApiChange');
@@ -163,7 +173,7 @@ export class IndexComponent implements OnInit {
       iframe.setAttribute("src", 'https://www.youtube.com/embed/?enablejsapi=1&amp;origin=' + this.origin + '&amp;widgetid=1&controls=0&cc_load_policy=1&iv_load_policy=3&showinfo=0&modestbranding=1&rel=0&autohide=0')
       :
       iframe.setAttribute("src", 'https://www.youtube.com/embed/?enablejsapi=1&amp;origin=' + this.origin + '&amp;widgetid=1&controls=0&cc_load_policy=0&iv_load_policy=3&showinfo=0&modestbranding=1&rel=0&autohide=0');
-    console.log(this.ccSet);
+    //console.log(this.ccSet);
     // login
     // this._router.navigate(["FarCry5"]);
     // let myLogin = this._login.login();
@@ -171,8 +181,8 @@ export class IndexComponent implements OnInit {
     // console.log('params: ', this.params['src']);
   }
   mouseover(el) {
-    console.log(el);
-    if (el === 'volume2') {
+    //console.log(el);
+    if (el === 'volume3') {
 
       if (this.sliderActive === false) {
         document.getElementsByClassName('volume-slider')[0].classList.remove('appear');
@@ -182,22 +192,19 @@ export class IndexComponent implements OnInit {
         setTimeout(() => {
           document.getElementsByClassName('volume-slider')[0].classList.add('fadein');
         }, 100);
-
-
       }
-
     }
     let src = '../../assets/images/desktop/' + el + 'active.png';
     document.getElementsByClassName(el)[0].setAttribute('src', src);
   }
   mouseout(el) {
-    if (el === 'volume2') {
+    if (el === 'volume3') {
       if (this.sliderActive === false) {
         document.getElementsByClassName('volume-slider')[0].classList.remove('fadein');
         //document.getElementsByClassName('volume-slider')[0].classList.add('fadeout');
       }
       setTimeout(() => {
-        if (document.getElementsByClassName('volume2')[0].getAttribute('src').indexOf('active') === -1) {
+        if (document.getElementsByClassName('volume3')[0].getAttribute('src').indexOf('active') === -1) {
           document.getElementsByClassName('volume-slider')[0].classList.remove('fadein');
         }
       }, 1000)
@@ -205,9 +212,9 @@ export class IndexComponent implements OnInit {
     let src = '../../assets/images/desktop/' + el + '.png';
     document.getElementsByClassName(el)[0].setAttribute('src', src);
     this.ccSet === true ?
-      document.getElementsByClassName('cc2')[0].setAttribute('src', '../../assets/images/desktop/cc2active.png')
+      document.getElementsByClassName('cc3')[0].setAttribute('src', '../../assets/images/desktop/cc3active.png')
       :
-      document.getElementsByClassName('cc2')[0].setAttribute('src', '../../assets/images/desktop/cc2.png')
+      document.getElementsByClassName('cc3')[0].setAttribute('src', '../../assets/images/desktop/cc3.png')
   }
   sliderActive = false;
   sliderMouseover() {
@@ -218,22 +225,22 @@ export class IndexComponent implements OnInit {
 
       myvolume = (document.getElementsByClassName('vranger')[0] as HTMLInputElement).value;
       myplayer.setVolume(myvolume);
-      console.log(myvolume);
+      //console.log(myvolume);
     };
 
     this.sliderActive = true;
-    document.getElementsByClassName('volume2')[0].setAttribute('src', '../../assets/images/desktop/volume2active.png');
+    document.getElementsByClassName('volume3')[0].setAttribute('src', '../../assets/images/desktop/volume3active.png');
     document.getElementsByClassName('volume-slider')[0].classList.add('fadein');
   }
   sliderContainerMouseout() {
     this.sliderActive = false;
-    document.getElementsByClassName('volume2')[0].setAttribute('src', '../../assets/images/desktop/volume2.png');
+    document.getElementsByClassName('volume3')[0].setAttribute('src', '../../assets/images/desktop/volume3.png');
     document.getElementsByClassName('volume-slider')[0].classList.remove('fadein');
-    console.log('myVolume', this.player.getVolume());
+    //console.log('myVolume', this.player.getVolume());
   }
   sliderMouseout() {
     this.sliderActive = false;
-    document.getElementsByClassName('volume2')[0].setAttribute('src', '../../assets/images/desktop/volume2.png');
+    document.getElementsByClassName('volume3')[0].setAttribute('src', '../../assets/images/desktop/volume3.png');
     // document.getElementsByClassName('volume-slider')[0].classList.remove('fadein');
     //document.getElementsByClassName('volume-slider')[0].classList.add('fadeout');
     setTimeout(() => {
@@ -250,6 +257,12 @@ export class IndexComponent implements OnInit {
     this.mute = !this.mute;
     let element: HTMLElement = document.getElementsByClassName('vranger')[0] as HTMLElement;
     let myvolume = (document.getElementsByClassName('vranger')[0] as HTMLInputElement).value = playerVolume;
+  }
+  textSize = 3;
+  resizeText(){
+    this.textSize = this.textSize === 3 ? 1 : 3;
+    console.log("textResize");
+    this.player.setOption("captions", "fontSize", this.textSize); // -1 to 3
   }
 
 }

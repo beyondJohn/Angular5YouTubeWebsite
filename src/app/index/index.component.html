@@ -1,6 +1,11 @@
 <div id="container">
 
   <body>
+    <div class="notification">
+      <div class="messageBox font">
+        <h2>Congratulations!</h2> You watched <h3>{{vidTitle}}</h3> Gor grab your REWARD!
+      </div>
+    </div>
     <div class="background-container">
       <div class="player-container">
         <div class="player">
@@ -10,7 +15,7 @@
           <div class="loading-text">
             GREATNESS AWAITS...
           </div>
-          <youtube-component style="z-index:2; height:360px; position:absolute; top:0px; display:none;" id="video" [videoId]="id" (ready)="onReady($event)"
+          <youtube-component class="yt-component" id="video" [videoId]="id" (ready)="onReady($event)"
             (change)="onChange($event)">
           </youtube-component>
           <div class="controls">
@@ -18,20 +23,20 @@
                 <input (mouseout)="sliderMouseout()" type="range" min="1" max="100" value="60" class="vranger"/>
             </div>
             <ul class="ul-controls">
-              <li style="padding-right: 300px;">
-                <img class="volume2" (click)="volumeClick()" (mouseover)="mouseover('volume2')" (mouseout)="mouseout('volume2')" src="../../assets/images/desktop/volume2.png"
+              <li class="controls-li">
+                <img class="volume3" (click)="volumeClick()" (mouseover)="mouseover('volume3')" (mouseout)="mouseout('volume3')" src="../../assets/images/desktop/volume3.png"
                 />
               </li>
               <li>
-                <img class="cc2" (mouseover)="mouseover('cc2')" (mouseout)="mouseout('cc2')" (click)="removecc()" src="../../assets/images/desktop/cc2.png"
+                  <img class="sharenbg3" (mouseover)="mouseover('sharenbg3')" (mouseout)="mouseout('sharenbg3')" src="../../assets/images/desktop/sharenbg3.png"
+                  />
+                </li>
+              <li>
+                <img class="cc3" (mouseover)="mouseover('cc3')" (mouseout)="mouseout('cc3')" (click)="removecc()" src="../../assets/images/desktop/cc3.png"
                 />
               </li>
               <li>
-                <img class="sharenbg" (mouseover)="mouseover('sharenbg')" (mouseout)="mouseout('sharenbg')" src="../../assets/images/desktop/sharenbg.png"
-                />
-              </li>
-              <li>
-                <img class="info2" (mouseover)="mouseover('info2')" (mouseout)="mouseout('info2')" src="../../assets/images/desktop/info2.png"
+                <img class="info3" (mouseover)="mouseover('info3')" (mouseout)="mouseout('info3')" (click)="resizeText()" src="../../assets/images/desktop/info3.png"
                 />
               </li>
             </ul>

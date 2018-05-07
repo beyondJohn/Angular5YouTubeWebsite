@@ -23,6 +23,7 @@ import { LoginService } from './services/login.service';
 import { MyHttpLogInterceptorService } from './services/my-http-log-interceptor.service';
 
 import { Config } from './config';
+import { ChannelsComponent } from './channels/channels.component';
 
 const appRoutes: Routes = [
   {
@@ -64,7 +65,8 @@ const appRoutes: Routes = [
     ErrormodalComponent,
     AwayComponent,
     IndexComponent,
-    CaptionsComponent
+    CaptionsComponent,
+    ChannelsComponent
   ],
   imports: [
     BrowserAnimationsModule,

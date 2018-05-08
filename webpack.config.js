@@ -115,10 +115,6 @@ const postcssPlugins = function (loader) {
             autoprefixer({ grid: true }),
         ];
     };
-
-
-
-
 module.exports = {
   "resolve": {
     "extensions": [

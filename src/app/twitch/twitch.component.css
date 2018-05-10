@@ -2,6 +2,7 @@
     position: relative;
     left: -350px;
     transition: all .5s;
+    padding: 10px 20px;
 }
 .twitch-player{
     position: relative;

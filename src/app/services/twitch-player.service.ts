@@ -23,7 +23,7 @@ export class TwitchPlayerService {
         let options = {
             width: this.width,
             height: this.height,
-            channel: "femsteph" //ninja sypherpk dinglederper femsteph 
+            channel: "ninja" //ninja sypherpk dinglederper femsteph tsm_myth 
             // video:  'ba349bcb-241f-4ce1-b731-f1d566556bcd'
         };
         let addListeners = false;

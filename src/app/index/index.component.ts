@@ -3,6 +3,7 @@ import { YoutubeComponent } from 'angularx-youtube';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../services/login.service';
 import { CaptionsComponent } from '../captions/captions.component';
+import { WindowRef } from '../services/window-ref.service';
 
 @Component({
   selector: 'app-index',
@@ -14,15 +15,19 @@ export class IndexComponent implements OnInit {
   constructor(
     private _router: Router,
     private _activatedRoute: ActivatedRoute,
-    private _login: LoginService
+    private _login: LoginService,
+    private _window: WindowRef
   ) { }
-
+  windowRef: WindowRef;
   ngOnInit() {
     this.origin = escape(window.location.origin).replace(/\//g, "%2F");
     this.routes = this._activatedRoute.params.subscribe(params => {
       this.params = params;
       this.src = params['src'];
     });
+    this.windowRef = this._window;
+    let myWindow = this._window;
+
   }
   vidTitle;
   currentTime;
@@ -31,7 +36,7 @@ export class IndexComponent implements OnInit {
   origin: string;
   title = 'app';
   player;
-  ids: Array<string> = ['D_JNQKlA57k', '2e-yAATMjBI', 'De6uAzvOx5E'];
+  ids: Array<string> = ['D_JNQKlA57k', '2e-yAATMjBI', 'De6uAzvOx5E'];//, 'vjy6FVNwCdU' spanish/english captions
   currentvideoindex = 2;
   id = this.ids[2];
   onetime = 0;
@@ -126,11 +131,15 @@ export class IndexComponent implements OnInit {
   }
 
   changeVid() {
-    //this.player.unloadModule("captions");
+    // this.player.unloadModule("captions");
 
     // update user info
     // let token = localStorage.getItem('authToken');
     // let myLogin = this._login.updateUserInfo(token);
+
+    //twitch test
+    let twitchTest = this._login.twitch();
+    
   }
   setPosition = false;
   currentPosition;
@@ -232,6 +241,7 @@ export class IndexComponent implements OnInit {
     this.textSize = this.textSize === 3 ? 1 : 3;
     console.log("textResize");
     this.player.setOption("captions", "fontSize", this.textSize); // -1 to 3
+    this.player.setOption("captions", "track", {"languageCode": "es"});
   }
 
 }

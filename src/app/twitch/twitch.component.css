@@ -1,0 +1,11 @@
+.twitch-info{
+    position: relative;
+    left: -350px;
+    transition: all .5s;
+}
+.twitch-player{
+    position: relative;
+}
+.twitch-info-show{
+    left: 0px;
+}

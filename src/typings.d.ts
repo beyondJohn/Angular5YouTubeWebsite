@@ -4,3 +4,5 @@ interface NodeModule {
   id: string;
 }
 declare function escape(s:string): string;
+
+

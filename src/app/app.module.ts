@@ -13,6 +13,8 @@ import { AwayComponent } from './away/away.component';
 import { ErrormodalComponent } from './errormodal/errormodal.component';
 import { IndexComponent } from './index/index.component';
 import { CaptionsComponent } from './captions/captions.component';
+import { ChannelsComponent } from './channels/channels.component';
+import { TwitchComponent } from './twitch/twitch.component';
 
 import { CacheFactory } from 'cachefactory';
 import { ModalService } from './services/modal.service';
@@ -21,9 +23,11 @@ import { CacheService } from './services/cache.service';
 import { RunService } from './services/run.service';
 import { LoginService } from './services/login.service';
 import { MyHttpLogInterceptorService } from './services/my-http-log-interceptor.service';
+import { WindowRef } from './services/window-ref.service';
+import { TwitchPlayerService } from './services/twitch-player.service'
 
 import { Config } from './config';
-import { ChannelsComponent } from './channels/channels.component';
+
 
 const appRoutes: Routes = [
   {
@@ -47,6 +51,11 @@ const appRoutes: Routes = [
     data: { title: 'Index', animation: 'index' }
   },
   {
+    path: 'twitch',
+    component: TwitchComponent,
+    data: { title: 'Twitch', animation: 'twitch' }
+  },
+  {
     path: '',
     component: IndexComponent,
     data: { title: 'index' }
@@ -66,7 +75,8 @@ const appRoutes: Routes = [
     AwayComponent,
     IndexComponent,
     CaptionsComponent,
-    ChannelsComponent
+    ChannelsComponent,
+    TwitchComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -82,6 +92,7 @@ const appRoutes: Routes = [
   providers: [
     ScanService, ModalService, NgbActiveModal, CacheFactory, CacheService, RunService
   ,LoginService, Config, HttpClient, { provide: HTTP_INTERCEPTORS, useClass: MyHttpLogInterceptorService, multi: true }
+  ,WindowRef, TwitchPlayerService
 ],
   entryComponents:[ ErrormodalComponent ],
   bootstrap: [AppComponent]

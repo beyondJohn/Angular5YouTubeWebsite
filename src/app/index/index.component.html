@@ -1,9 +1,8 @@
 <div id="container">
-
   <body>
     <div class="notification">
       <div class="messageBox font">
-        <h2>Congratulations!</h2> You watched <h3>{{vidTitle}}</h3> Gor grab your REWARD!
+        <h2>Congratulations!</h2> You watched <h3>{{vidTitle}}</h3> Go grab your REWARD!
       </div>
     </div>
     <div class="background-container">
@@ -28,7 +27,7 @@
                 />
               </li>
               <li>
-                  <img class="sharenbg3" (click)="play()" (mouseover)="mouseover('sharenbg3')" (mouseout)="mouseout('sharenbg3')" src="../../assets/images/desktop/sharenbg3.png"
+                  <img class="sharenbg3" (click)="changeVid()" (mouseover)="mouseover('sharenbg3')" (mouseout)="mouseout('sharenbg3')" src="../../assets/images/desktop/sharenbg3.png"
                   />
                 </li>
               <li>
@@ -41,7 +40,7 @@
               </li>
             </ul>
             <div class="captions">
-                <app-captions [currentTime]="currentTime"></app-captions>
+                <!-- <app-captions [currentTime]="currentTime"></app-captions> -->
             </div>
           </div>
         </div>

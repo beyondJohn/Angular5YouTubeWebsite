@@ -9,6 +9,13 @@ export class LoginService {
     private _http: HttpClient,
     private _config: Config
   ) { }
+  twitch(){
+    const options = {responseType: 'text' as 'text'};
+    this._http.get(this._config.urls.twitchAPI + '19571641', options).subscribe(
+      data => {
+        console.log("twitch data: ", data);
+      });
+  }
   login() {
     var callback_uri, redirect_uri;
     callback_uri = escape(location.href).replace(/\//g,"%2F");
@@ -69,7 +76,7 @@ export class LoginService {
     );
   };
 }
-class UserInfo{
+interface UserInfo{
   first_name?;
   last_name?;
   profile_url?;

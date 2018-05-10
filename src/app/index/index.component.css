@@ -12,6 +12,7 @@
     background-color: #303030;
     padding: 30px;
     text-align: center;
+    min-width: 300px;
 }
 .font{
     color: white;

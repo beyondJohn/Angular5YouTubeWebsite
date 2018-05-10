@@ -3,10 +3,27 @@
     left: -350px;
     transition: all .5s;
     padding: 10px 20px;
+    width:100%;
+    font-family: 'Brush Script MT', 'Brush Script Std', cursive;
 }
 .twitch-player{
     position: relative;
+    width:100%;
+    height:100%;
 }
 .twitch-info-show{
     left: 0px;
+}
+.twitch-info-container{
+    position: relative;
+    margin: auto;
+    width: 640px;
+    height:360px;
+    padding: 0px;
+    background-image: url('../../assets/images/desktop/twitchbg.jpg');
+    background-size: cover;
+}
+span{
+    color:#0074d1;
+    font-family: 'Brush Script MT', 'Brush Script Std', cursive;
 }

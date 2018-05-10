@@ -48,7 +48,7 @@ export class IndexComponent implements OnInit {
   play() { //autoplay fallback
     // getPlayerState() -1 = unstarted, 0 = ended, 1 = playing, 2 = pause, 3 = buffering, 5 = viceo cued (no 4)
     if (this.playing === false) { 
-      if (this.player.getPlayerState() !== undefined && this.player.getPlayerState() !== 1) {
+      if (this.player.getPlayerState() !== undefined || this.player.getPlayerState() !== 1) {
         this.player.playVideo();
         this.playing = false;
       }

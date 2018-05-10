@@ -43,6 +43,7 @@ export class TwitchPlayerService {
                         setTimeout(() => {
                             console.log("myPlayerBridge", this.playerState);
                             this.channelId = this.playerState[0]['_bridge']['_playerState']['channelId'];
+                            document.getElementsByTagName('iframe')[0].setAttribute('style', 'width:100%; height:100%');
                             console.log("this.channel: ", this.channelId);
                             if(this.channelId === 0){
                                 console.log('got 0');

@@ -11,19 +11,18 @@ export class TwitchPlayerService {
     public width: string = '640';
     public height: string = '360';
     public ready: boolean = false;
-    @Output() public currentVideoText: EventEmitter<any> = new EventEmitter(true);
+    //@Output() public currentVideoText: EventEmitter<any> = new EventEmitter(true);
     private currentVideoId: string;
 
     constructor() { }
-    /* MY-TODO write a function to initialize the twitch-player frame taking into
-    consideration the VIDEO-ID */
+
     channelId;
     playerState: Array<object> = [];
     public createPlayer(): void {
         let options = {
             width: this.width,
             height: this.height,
-            channel: "ninja" //ninja sypherpk dinglederper femsteph tsm_myth 
+            channel: "sypherpk" //ninja sypherpk dinglederper femsteph tsm_myth nickeh30
             // video:  'ba349bcb-241f-4ce1-b731-f1d566556bcd'
         };
         let addListeners = false;
@@ -41,18 +40,14 @@ export class TwitchPlayerService {
                         this.playerState[0] = playerObject;
                         //playerState = JSON.stringify(playerBridge);
                         setTimeout(() => {
-                            console.log("myPlayerBridge", this.playerState);
                             this.channelId = this.playerState[0]['_bridge']['_playerState']['channelId'];
                             document.getElementsByTagName('iframe')[0].setAttribute('style', 'width:100%; height:100%');
-                            console.log("this.channel: ", this.channelId);
                             if(this.channelId === 0){
-                                console.log('got 0');
                                 getInfo();
                             }
                             else{
                                 this.ready = true;
                             }
-                            console.log("this.channel: ", this.channelId);
                         },200);
                           
                     };
@@ -67,7 +62,6 @@ export class TwitchPlayerService {
     isReady(){
         this.ready = true;
     }
-    /* My-TODO - create a Play-Video function that would load the video by ID //'v109010497'*/
     //   public playVideo(video: any) {
     //       if (!this.twitch_player) {
     //           console.log('Video Player is Loading');

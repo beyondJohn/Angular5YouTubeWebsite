@@ -46,20 +46,33 @@ export class IndexComponent implements OnInit {
   }
   playing = false;
   play() { //autoplay fallback
-    // getPlayerState() -1 = unstarted, 0 = ended, 1 = playing, 2 = pause, 3 = buffering, 5 = viceo cued (no 4)
-    if (this.playing === false) { 
-      if (this.player.getPlayerState() !== undefined || this.player.getPlayerState() !== 1) {
-        this.player.playVideo();
-        this.playing = false;
+    setTimeout(() => {
+      // getPlayerState() -1 = unstarted, 0 = ended, 1 = playing, 2 = pause, 3 = buffering, 5 = video cued (no 4)
+      if (!this.playing) {
+        console.log('this.player.getPlayerState(): ', this.player.getPlayerState())
+        if (this.player.getPlayerState() === -1 && this.playing === false
+        || this.player.getPlayerState() !== 1 && this.playing === false
+        || this.player.getPlayerState() === 5 && this.playing === false) {
+          console.log('inside this.player.getPlayerState(): ', this.player.getPlayerState())
+          this.player.playVideo();
+          this.playing = true;
+          return;
+        }
+        else if(this.player.getPlayerState() === 1)
+        {
+          this.playing = true;
+          return;
+        }
+        else{
+          this.play();
+        }
       }
-      else {
-        this.play();
-      }
-    }
+    }, 500)
+
   }
   onReady(player): void {
     this.player = player;
-    this.player.setVolume(60);
+    this.player.setVolume(this.volume);
 
 
     if (this.setPosition === true) {
@@ -87,8 +100,8 @@ export class IndexComponent implements OnInit {
       if (playerState !== 1) {// unstarted
         if (playerState === 0) {// ended
           this.vidTitle = this.player.getVideoData()['title'];
-          document.getElementsByClassName('notification')[0].setAttribute('style', 'top:30px;');
-
+          document.getElementsByClassName('swing')[0].classList.add('show');
+          document.getElementById("messageBox").classList.add('messageBox');
           checkEnded(0);
           // console.log('ended: ',this.player.getVideoData());
           this.onetime = 0;
@@ -96,12 +109,16 @@ export class IndexComponent implements OnInit {
           this.player.cueVideoById(this.ids[this.currentvideoindex]);
           console.log('player changed');
           this.playing = false;
-          setTimeout(() => { this.play() }, 200)
+
           setTimeout(() => {
-            document.getElementsByClassName('notification')[0].setAttribute('style', 'top:-400px;');
-          }, 6000)
+            document.getElementsByClassName('swing')[0].classList.remove('show');
+            setTimeout(()=>{
+              document.getElementById('messageBox').classList.remove('messageBox');
+            },1500);
+          }, 8000);
         }
       }
+      setTimeout(() => { this.play() }, 400);
       this.currentTime = this.player.getCurrentTime();
       // console.log('ended: ',this.player.getVideoData());
     }, 3000)
@@ -139,11 +156,11 @@ export class IndexComponent implements OnInit {
 
     //twitch test
     let twitchTest = this._login.twitch();
-    
+
   }
   setPosition = false;
   currentPosition;
-  volume;
+  volume = 60;
   ccSet = false;
   removecc() {
 
@@ -231,7 +248,8 @@ export class IndexComponent implements OnInit {
     let playerVolume;
     this.player.getVolume() > 0 ? this.mute = false : this.mute = true;
     this.mute === true ? playerVolume = 60 : playerVolume = 0;
-    this.player.setVolume(playerVolume)
+    this.player.setVolume(playerVolume);
+    this.volume = playerVolume;
     this.mute = !this.mute;
     let element: HTMLElement = document.getElementsByClassName('vranger')[0] as HTMLElement;
     let myvolume = (document.getElementsByClassName('vranger')[0] as HTMLInputElement).value = playerVolume;
@@ -241,7 +259,7 @@ export class IndexComponent implements OnInit {
     this.textSize = this.textSize === 3 ? 1 : 3;
     console.log("textResize");
     this.player.setOption("captions", "fontSize", this.textSize); // -1 to 3
-    this.player.setOption("captions", "track", {"languageCode": "es"});
+    this.player.setOption("captions", "track", { "languageCode": "es" });
   }
 
 }

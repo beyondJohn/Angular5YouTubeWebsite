@@ -1,6 +1,182 @@
-body{
+body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif futura-lt-book;
 }
-ul{
+
+ul {
     list-style-type: none;
 }
+
+.swing {
+    -o-perspective: 500;
+    -moz-perspective: 500;
+    -webkit-perspective: 500;
+    perspective: 500;
+    display: block;
+    text-align: center;
+    width: 100%;
+    position: absolute;;
+    transition:top .4s;
+    -webkit-transition:top .4s;
+    -moz-transition:top .4s;
+    -o-transition:top .4s;
+    top:-600px;
+    z-index:4;
+}
+
+.show {
+    top: 100px !important;
+}
+
+.messageBox {
+    position: relative;
+    -ms-transform: rotateX(0deg);
+    -ms-transform-origin: top;
+    -ms-animation: balance 3.5s ease-in-out 0ms;
+    -o-transform: rotateX(0deg);
+    -o-transform-origin: top;
+    -o-animation: balance 3.5s ease-in-out 0ms;
+    -moz-transform: rotateX(0deg);
+    -moz-transform-origin: top;
+    -moz-animation: balance 3.5s ease-in-out 0ms;
+    -webkit-transform: rotateX(0deg);
+    -webkit-transform-origin: top;
+    -webkit-animation: balance 3.5s ease-in-out 0ms;
+    transform-style: preserve-3d;
+    transform: rotateX(0deg);
+    transform-origin: top;
+    animation: balance 3.5s ease-in-out 0ms;
+    /* background: #00aced; */
+    background: -webkit-linear-gradient(top, #1e5799 0%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#207cca 100%,#207cca 100%); 
+    display: block;
+    margin: 0 auto;
+    color: #fff;
+    text-align: center;
+    padding: 40px;
+    width: 40%;
+    min-width: 300px;
+}
+
+@-moz-keyframes balance {
+    0% {
+      -moz-transform: rotateX(-116deg);
+      transform: rotateX(-116deg);
+      background: -moz-linear-gradient(top, #1e5799 0%,#207cca 84%,#207cca 84%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#2989d8 100%); 
+    }
+    /* 1%{top:60px} */
+    5% {
+      -moz-transform: rotateX(-95deg);
+      transform: rotateX(-95deg);
+      background: -moz-linear-gradient(top, #1e5799 0%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#2989d8 101%); 
+    }
+    13% {
+      -moz-transform: rotateX(50deg);
+      transform: rotateX(50deg);
+      background: -moz-linear-gradient(top, #1e5799 0%,#207cca 84%,#207cca 84%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#2989d8 100%); 
+    }
+    25% {
+      -moz-transform: rotateX(-40deg);
+      transform: rotateX(-40deg);
+      background: -moz-linear-gradient(top, #1e5799 0%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#2989d8 101%); 
+    }
+    43% {
+      -moz-transform: rotateX(25deg);
+      transform: rotateX(25deg);
+      background: -moz-linear-gradient(top, #1e5799 0%,#207cca 84%,#207cca 84%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#2989d8 100%); 
+    }
+    62% {
+      -moz-transform: rotateX(-15deg);
+      transform: rotateX(-15deg);
+      background: -moz-linear-gradient(top, #1e5799 0%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#2989d8 101%); 
+    }
+    84% {
+      -moz-transform: rotateX(7deg);
+      transform: rotateX(7deg);
+     background: -moz-linear-gradient(top, #1e5799 0%,#207cca 84%,#207cca 84%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#2989d8 100%); 
+    } 
+    100% {
+      -moz-transform: rotateX(0deg);
+      transform: rotateX(0deg);
+      background: -moz-linear-gradient(top, #1e5799 0%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#207cca 100%,#207cca 100%); 
+    }
+  }
+@-webkit-keyframes balance {
+    0% {
+      -webkit-transform: rotateX(-116deg);
+      transform: rotateX(-116deg);
+      background: -webkit-linear-gradient(top, #1e5799 0%,#207cca 84%,#207cca 84%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#2989d8 100%); 
+      
+    }
+    /* 1%{top:60px} */
+    5% {
+      -webkit-transform: rotateX(-95deg);
+      transform: rotateX(-95deg);
+      background: -webkit-linear-gradient(top, #1e5799 0%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#2989d8 101%); 
+    }
+    13% {
+      -webkit-transform: rotateX(50deg);
+      transform: rotateX(50deg);
+      background: -webkit-linear-gradient(top, #1e5799 0%,#207cca 84%,#207cca 84%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#2989d8 100%); 
+    }
+    25% {
+      -webkit-transform: rotateX(-40deg);
+      transform: rotateX(-40deg);
+      background: -webkit-linear-gradient(top, #1e5799 0%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#2989d8 101%); 
+    }
+    43% {
+      -webkit-transform: rotateX(25deg);
+      transform: rotateX(25deg);
+      background: -webkit-linear-gradient(top, #1e5799 0%,#207cca 84%,#207cca 84%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#2989d8 100%); 
+    }
+    62% {
+      -webkit-transform: rotateX(-15deg);
+      transform: rotateX(-15deg);
+      background: -webkit-linear-gradient(top, #1e5799 0%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#2989d8 101%); 
+    }
+    84% {
+      -webkit-transform: rotateX(7deg);
+      transform: rotateX(7deg);
+     background: -webkit-linear-gradient(top, #1e5799 0%,#207cca 84%,#207cca 84%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#2989d8 100%); 
+    } 
+    100% {
+      -webkit-transform: rotateX(0deg);
+      transform: rotateX(0deg);
+      background: -webkit-linear-gradient(top, #1e5799 0%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#207cca 100%,#207cca 100%); 
+    }
+  }
+@keyframes balance {
+    0% {
+      transform: rotateX(-116deg);
+      background: linear-gradient(top, #1e5799 0%,#207cca 84%,#207cca 84%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#2989d8 100%); 
+    
+    }
+    /* 1%{top:60px} */
+    5% {
+      transform: rotateX(-95deg);
+      background: linear-gradient(top, #1e5799 0%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#2989d8 101%); 
+    }
+    13% {
+      transform: rotateX(50deg);
+      background: linear-gradient(top, #1e5799 0%,#207cca 84%,#207cca 84%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#2989d8 100%); 
+    }
+    25% {
+      transform: rotateX(-40deg);
+      background: linear-gradient(top, #1e5799 0%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#2989d8 101%); 
+    }
+    43% {
+      transform: rotateX(25deg);
+      background: linear-gradient(top, #1e5799 0%,#207cca 84%,#207cca 84%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#2989d8 100%); 
+    }
+    62% {
+      transform: rotateX(-15deg);
+      background: linear-gradient(top, #1e5799 0%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#2989d8 101%); 
+    }
+    84% {
+      transform: rotateX(7deg);
+     background: linear-gradient(top, #1e5799 0%,#207cca 84%,#207cca 84%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#2989d8 100%); 
+    } 
+    100% {
+      transform: rotateX(0deg);
+      background: linear-gradient(top, #1e5799 0%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#207cca 100%,#207cca 100%); 
+    }
+  }
+  

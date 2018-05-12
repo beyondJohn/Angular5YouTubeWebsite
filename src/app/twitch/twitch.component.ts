@@ -17,7 +17,7 @@ export class TwitchComponent implements AfterContentInit {
     public minPlayer: boolean = true;
     public superMinPlayer: boolean = false;
     public fullscreenActive: boolean = false;
-    public currentVideoText: string = 'None';
+    //public currentVideoText: string = 'None';
 
     constructor(
         private twitchplayerservice: TwitchPlayerService
@@ -26,7 +26,7 @@ export class TwitchComponent implements AfterContentInit {
         , private _login: LoginService
     ) {
         // tslint:disable-next-line:max-line-length
-        this.twitchplayerservice.currentVideoText.subscribe((event) => this.currentVideoText = event || 'None');
+        //this.twitchplayerservice.currentVideoText.subscribe((event) => this.currentVideoText = event || 'None');
     }
 
     options = { responseType: 'text' as 'text' };

@@ -6,6 +6,7 @@ import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { YoutubeModule } from 'angularx-youtube';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -27,6 +28,7 @@ import { WindowRef } from './services/window-ref.service';
 import { TwitchPlayerService } from './services/twitch-player.service'
 
 import { Config } from './config';
+import { TestSwingComponent } from './test-swing/test-swing.component';
 
 
 const appRoutes: Routes = [
@@ -56,15 +58,20 @@ const appRoutes: Routes = [
     data: { title: 'Twitch', animation: 'twitch' }
   },
   {
-    path: '',
-    component: IndexComponent,
-    data: { title: 'index' }
+    path: 'test',
+    component: TestSwingComponent,
+    data: { title: 'Test', animation: 'test' }
   },
   {
     path: ':src',
     component: IndexComponent,
     data: { title: 'index' }
-  }
+  },
+  {
+    path: "",
+    redirectTo: 'index',
+    pathMatch: 'full'
+},
 ]
 
 @NgModule({
@@ -76,13 +83,14 @@ const appRoutes: Routes = [
     IndexComponent,
     CaptionsComponent,
     ChannelsComponent,
-    TwitchComponent
+    TwitchComponent,
+    TestSwingComponent
   ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
     RouterModule.forRoot(appRoutes,
-      {enableTracing: false}
+      {enableTracing: false, onSameUrlNavigation: 'reload'}
     ),
     NgbModule.forRoot(),
     YoutubeModule,
@@ -92,7 +100,7 @@ const appRoutes: Routes = [
   providers: [
     ScanService, ModalService, NgbActiveModal, CacheFactory, CacheService, RunService
   ,LoginService, Config, HttpClient, { provide: HTTP_INTERCEPTORS, useClass: MyHttpLogInterceptorService, multi: true }
-  ,WindowRef, TwitchPlayerService
+  ,WindowRef, TwitchPlayerService, {provide: LocationStrategy, useClass: HashLocationStrategy}
 ],
   entryComponents:[ ErrormodalComponent ],
   bootstrap: [AppComponent]

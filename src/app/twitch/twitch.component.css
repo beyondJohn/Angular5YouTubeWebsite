@@ -14,16 +14,53 @@
 .twitch-info-show{
     left: 0px;
 }
-.twitch-info-container{
+.twitch-video-container{
     position: relative;
-    margin: auto;
     width: 640px;
     height:360px;
     padding: 0px;
     background-image: url('../../assets/images/desktop/twitchbg.jpg');
     background-size: cover;
+    
 }
 span{
     color:#0074d1;
     font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+}
+.twitch-container{
+    position: relative;
+    margin: auto;
+    width: 640px;
+    height:560px;
+    padding: 0px;
+    overflow: hidden;
+}
+.notification{
+    position: absolute;
+    z-index: 4;
+    width:100%;
+    top:-400px;
+    transition: all .3s;
+    transform-style: preserve-3d;
+}
+.testmessageBox {
+    position: relative;
+    top: 60px;
+    z-index: 1;
+    transform: rotateX(0deg);
+    transform-origin: top;
+    transform-style: preserve-3d;
+    animation: balance 2.5s ease-in-out 0ms infinite;
+    -webkit-transform: rotateX(0deg);
+    -webkit-transform-origin: top;
+    -webkit-animation: balance 2.5s ease-in-out 0ms infinite;
+    -webkit-transform-style: preserve-3d;
+    background: -webkit-linear-gradient(top, #1e5799 0%, #207cca 97%, #207cca 97%, #207cca 97%, #207cca 98%, #207cca 98%, #207cca 98%, #207cca 98%, #207cca 99%, #207cca 99%, #2989d8 100%, #2989d8 100%, #7db9e8 100%, #207cca 100%, #207cca 100%, #207cca 100%);
+    padding: 30px;
+    display: block;
+    margin: auto;
+    color: #fff;
+    text-align: center;
+    width: 40%;
+    min-width: 300px;
 }

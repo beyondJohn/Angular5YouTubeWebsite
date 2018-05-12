@@ -1,19 +1,4 @@
-.notification{
-    position: absolute;
-    z-index: 4;
-    width:100%;
-    top:-400px;
-    transition: all .3s;
-}
-.messageBox{
-    width:40%;
-    margin: auto;
-    border: white 1px solid;
-    background-color: #303030;
-    padding: 30px;
-    text-align: center;
-    min-width: 300px;
-}
+
 .font{
     color: white;
 }

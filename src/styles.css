@@ -28,6 +28,8 @@ ul {
 }
 
 .messageBox {
+    border: 2px white double;
+    box-shadow: inset 0 0 0 5px #212529;
     position: relative;
     -ms-transform: rotateX(0deg);
     -ms-transform-origin: top;

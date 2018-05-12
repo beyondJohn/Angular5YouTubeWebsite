@@ -16,6 +16,8 @@
     top:60px;
   }
 .mycontent {
+    border: 2px white double;
+    box-shadow: inset 0 0 0 5px #212529;
     position: relative;
     top:60px;
     z-index: 1;

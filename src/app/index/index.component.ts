@@ -115,7 +115,7 @@ export class IndexComponent implements OnInit {
             setTimeout(()=>{
               document.getElementById('messageBox').classList.remove('messageBox');
             },1500);
-          }, 7000);
+          }, 8000);
         }
       }
       setTimeout(() => { this.play() }, 400);

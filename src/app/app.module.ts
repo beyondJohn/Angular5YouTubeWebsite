@@ -25,7 +25,8 @@ import { RunService } from './services/run.service';
 import { LoginService } from './services/login.service';
 import { MyHttpLogInterceptorService } from './services/my-http-log-interceptor.service';
 import { WindowRef } from './services/window-ref.service';
-import { TwitchPlayerService } from './services/twitch-player.service'
+import { TwitchPlayerService } from './services/twitch-player.service';
+import { BehaviorSubjectService } from './services/behavior-subject.service';
 
 import { Config } from './config';
 import { TestSwingComponent } from './test-swing/test-swing.component';
@@ -54,6 +55,11 @@ const appRoutes: Routes = [
   },
   {
     path: 'twitch',
+    component: TwitchComponent,
+    data: { title: 'Twitch', animation: 'twitch' }
+  },
+  {
+    path: 'twitch/:channel',
     component: TwitchComponent,
     data: { title: 'Twitch', animation: 'twitch' }
   },
@@ -101,6 +107,7 @@ const appRoutes: Routes = [
     ScanService, ModalService, NgbActiveModal, CacheFactory, CacheService, RunService
   ,LoginService, Config, HttpClient, { provide: HTTP_INTERCEPTORS, useClass: MyHttpLogInterceptorService, multi: true }
   ,WindowRef, TwitchPlayerService, {provide: LocationStrategy, useClass: HashLocationStrategy}
+  ,BehaviorSubjectService
 ],
   entryComponents:[ ErrormodalComponent ],
   bootstrap: [AppComponent]

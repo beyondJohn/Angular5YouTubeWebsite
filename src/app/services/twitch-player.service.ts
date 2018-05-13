@@ -1,5 +1,6 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { BehaviorSubjectService } from './behavior-subject.service';
 
 let _window: any = window;
 declare var Twitch: any;
@@ -14,15 +15,19 @@ export class TwitchPlayerService {
     //@Output() public currentVideoText: EventEmitter<any> = new EventEmitter(true);
     private currentVideoId: string;
 
-    constructor() { }
-
+    constructor(
+        private _behaviorSubject: BehaviorSubjectService
+    ) {
+        this._behaviorSubject.twitchChannel.subscribe(channel => this.channel = channel['channel'])
+    }
+    channel;
     channelId;
     playerState: Array<object> = [];
     public createPlayer(): void {
         let options = {
             width: this.width,
             height: this.height,
-            channel: "sypherpk" //ninja sypherpk dinglederper femsteph tsm_myth nickeh30
+            channel: this.channel //ninja sypherpk dinglederper femsteph tsm_myth nickeh30
             // video:  'ba349bcb-241f-4ce1-b731-f1d566556bcd'
         };
         let addListeners = false;
@@ -35,31 +40,31 @@ export class TwitchPlayerService {
                 this.twitch_player = new Twitch.Player('twitch-player', options);
                 this.twitch_player.setMuted(false);
                 this.twitch_player.addEventListener(Twitch.Player.READY, _ => {
-                    let getInfo = () =>{
+                    let getInfo = () => {
                         playerObject = this.twitch_player;
                         this.playerState[0] = playerObject;
                         //playerState = JSON.stringify(playerBridge);
                         setTimeout(() => {
                             this.channelId = this.playerState[0]['_bridge']['_playerState']['channelId'];
                             document.getElementsByTagName('iframe')[0].setAttribute('style', 'width:100%; height:100%');
-                            if(this.channelId === 0){
+                            if (this.channelId === 0) {
                                 getInfo();
                             }
-                            else{
+                            else {
                                 this.ready = true;
                             }
-                        },200);
-                          
+                        }, 200);
+
                     };
                     getInfo();
-                    
-                }); 
-                console.log("clearInterval");  
+
+                });
+                console.log("clearInterval");
                 clearInterval(interval);
             }
         }, 400);
     }
-    isReady(){
+    isReady() {
         this.ready = true;
     }
     //   public playVideo(video: any) {
@@ -76,6 +81,6 @@ export class TwitchPlayerService {
     }
 
 }
-interface playerBridge{
-    
+interface playerBridge {
+
 }

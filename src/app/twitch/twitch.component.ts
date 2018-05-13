@@ -4,6 +4,8 @@ import { WindowRef } from '../services/window-ref.service';
 import { HttpClient } from '@angular/common/http';
 import { Config } from '../config';
 import { LoginService } from '../services/login.service';
+import { ActivatedRoute } from '@angular/router';
+import { BehaviorSubjectService } from '../services/behavior-subject.service';
 let _window: any = window;
 declare var Twitch: any;
 
@@ -24,11 +26,18 @@ export class TwitchComponent implements AfterContentInit {
         , private _http: HttpClient
         , private _config: Config
         , private _login: LoginService
-    ) {
+        , private _activeRoute: ActivatedRoute
+        , private _behaviorSubject: BehaviorSubjectService
+    ) { 
+        let channel;
+        this._activeRoute.params.subscribe(params => {
+            channel = params['channel'] || '';
+        });
+        channel === '' ? '' : this._behaviorSubject.setTwitchChannel({channel: channel});
         // tslint:disable-next-line:max-line-length
         //this.twitchplayerservice.currentVideoText.subscribe((event) => this.currentVideoText = event || 'None');
     }
-
+    activeChannel;
     options = { responseType: 'text' as 'text' };
 
     // Dynamically embed our API String for Interative Twitch videos
@@ -40,31 +49,29 @@ export class TwitchComponent implements AfterContentInit {
         doc.body.appendChild(playerApi);
         this.twitchplayerservice.createPlayer();
         this.getTitle();
-
     }
     title: string = '';
     name;
     game;
     private getTitle() {
         const options = { responseType: 'text' as 'text' };
-        // console.log(this.twitchplayerservice.twitch_player);
-        // console.log(this.twitchplayerservice.twitch_player.getPlaybackStats());
-
-
         let checkReady = setInterval(() => {
             if (this.twitchplayerservice.ready === true) {
-                setTimeout(()=>{
+                setTimeout(() => {
                     this._http.get(this._config.urls.twitchAPI + this.twitchplayerservice.channelId, this.options).subscribe(
                         data => {
                             let myData = JSON.parse(data);
-    
-                            this.title = myData['stream']['channel']['status'];
-                            this.name = myData['stream']['channel']['display_name'];
-                            this.game = myData['stream']['channel']['game'];
-                            document.getElementsByClassName('twitch-info')[0].classList.add('twitch-info-show');
+                            try {
+                                this.title = myData['stream']['channel']['status'];
+                                this.name = myData['stream']['channel']['display_name'];
+                                this.game = myData['stream']['channel']['game'];
+                                document.getElementsByClassName('twitch-info')[0].classList.add('twitch-info-show');
+                                console.log('twitch channel online & ready');
+                            }
+                            catch (e) { console.log('twitch channel offline'); }
                         });
                     clearInterval(checkReady);
-                },300)
+                }, 300)
             }
         }, 400)
     }

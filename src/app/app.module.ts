@@ -30,6 +30,8 @@ import { BehaviorSubjectService } from './services/behavior-subject.service';
 
 import { Config } from './config';
 import { TestSwingComponent } from './test-swing/test-swing.component';
+import { YoutubeComponent } from './youtube/youtube.component';
+import { YoutubeService } from './services/youtube.service'; 
 
 
 const appRoutes: Routes = [
@@ -64,6 +66,11 @@ const appRoutes: Routes = [
     data: { title: 'Twitch', animation: 'twitch' }
   },
   {
+    path: 'youtube',
+    component: YoutubeComponent,
+    data: { title: 'Youtube', animation: 'youtube' }
+  },
+  {
     path: 'test',
     component: TestSwingComponent,
     data: { title: 'Test', animation: 'test' }
@@ -90,7 +97,8 @@ const appRoutes: Routes = [
     CaptionsComponent,
     ChannelsComponent,
     TwitchComponent,
-    TestSwingComponent
+    TestSwingComponent,
+    YoutubeComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -107,7 +115,7 @@ const appRoutes: Routes = [
     ScanService, ModalService, NgbActiveModal, CacheFactory, CacheService, RunService
   ,LoginService, Config, HttpClient, { provide: HTTP_INTERCEPTORS, useClass: MyHttpLogInterceptorService, multi: true }
   ,WindowRef, TwitchPlayerService, {provide: LocationStrategy, useClass: HashLocationStrategy}
-  ,BehaviorSubjectService
+  ,BehaviorSubjectService, YoutubeService
 ],
   entryComponents:[ ErrormodalComponent ],
   bootstrap: [AppComponent]

@@ -28,7 +28,6 @@ export class YoutubeComponent implements OnInit, AfterContentInit {
     const player  = document.getElementById('player') as HTMLIFrameElement;
     var youtube_command = JSON.stringify( { event: 'command', func: 'pauseVideo' } );
     var myplayer = player.contentWindow;
-    console.log(myplayer);
     myplayer.postMessage(youtube_command,'https://www.youtube.com');
     
   }
@@ -36,9 +35,13 @@ export class YoutubeComponent implements OnInit, AfterContentInit {
     const player  = document.getElementById('player') as HTMLIFrameElement;
     var youtube_command = JSON.stringify( { event: 'command', func: 'playVideo' } );
     var myplayer = player.contentWindow;
-    console.log(myplayer);
     myplayer.postMessage(youtube_command,'https://www.youtube.com');
-    
+  }
+  cap(){
+    const player  = document.getElementById('player') as HTMLIFrameElement;
+    var youtube_command = JSON.stringify( { event: 'command', func: 'playVideo' } );
+    var myplayer = player.contentWindow;
+    myplayer.postMessage(youtube_command,'https://www.youtube.com');
   }
 
 }

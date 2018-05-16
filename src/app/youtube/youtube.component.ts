@@ -13,12 +13,15 @@ export class YoutubeComponent implements OnInit, AfterContentInit {
     private _yt: YoutubeService
   ) { }
   origin;
+  player;
   ngOnInit() {
     this.origin = escape(window.location.origin).replace(/\//g, "%2F");
     let end = setInterval(()=>{
       if(this.state === 0){
         console.log('ended');
         clearInterval(end);
+        this.player.cueVideoById('D_JNQKlA57k');
+        this.player.playVideo();
       }
     },1000)
   }
@@ -27,7 +30,7 @@ export class YoutubeComponent implements OnInit, AfterContentInit {
     let doc = window.document;
     let playerApi = doc.createElement('script');
     playerApi.type = 'text/javascript';
-    playerApi.src = 'https://www.youtube.com/iframe_api?enablejsapi=1&origin=' + this.origin + '&autoplay=1&widgetid=3&controls=0&cc_load_policy=0&iv_load_policy=3&showinfo=0&modestbranding=1&rel=0&autohide=0&html5=1';
+    playerApi.src = 'https://www.youtube.com/iframe_api?enablejsapi=1&origin=' + this.origin + '&autoplay=1&widgetid=3&controls=0&cc_load_policy=3&iv_load_policy=3&showinfo=0&modestbranding=1&rel=0&autohide=0&html5=1';
     doc.body.appendChild(playerApi);
     var player;
     let myinterval = setInterval(() => {
@@ -46,7 +49,7 @@ export class YoutubeComponent implements OnInit, AfterContentInit {
               'onStateChange': onPlayerStateChange
             }
           });
-          
+          this.player = player;
         }
 
         onYouTubeIframeAPIReady();
@@ -55,7 +58,7 @@ export class YoutubeComponent implements OnInit, AfterContentInit {
     }, 200);
     let onPlayerStateChange = (event) => {
       console.log('event changed');
-      let src = 'https://www.youtube.com/embed/De6uAzvOx5E?enablejsapi=1&origin=' + this.origin + '&autoplay=1&widgetid=3&controls=0&cc_load_policy=0&iv_load_policy=3&showinfo=0&modestbranding=1&rel=0&autohide=0';
+      let src = 'https://www.youtube.com/embed/De6uAzvOx5E?enablejsapi=1&origin=' + this.origin + '&autoplay=1&widgetid=3&controls=0&cc_load_policy=3&iv_load_policy=3&showinfo=0&modestbranding=1&rel=0&autohide=0';
     if (event.data === -1) {
       let iframe = document.getElementsByTagName('iframe')[0];
 
@@ -76,14 +79,14 @@ export class YoutubeComponent implements OnInit, AfterContentInit {
       let iframe = document.getElementsByTagName('iframe')[0];
       var youtube_command = JSON.stringify({ event: 'command', func: 'pauseVideo' });
 
-      //iframe.contentWindow.postMessage(youtube_command, '*');
+      iframe.contentWindow.postMessage(youtube_command, '*');
       console.log(event.target.getPlayerState());
       // const player = _window.document.getElementById('player') as HTMLIFrameElement;
       setTimeout(()=>{
         let iframe1 = document.getElementsByTagName('iframe')[0];
         var youtube_command1 = JSON.stringify({ event: 'command', func: 'playVideo' });
         iframe1.contentWindow.postMessage(youtube_command1, '*');
-      },500);
+      },1000);
       let playing = setInterval(()=>{
         let iframe2 = document.getElementsByTagName('iframe')[0];
         this.state = event.target.getPlayerState();

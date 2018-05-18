@@ -44,6 +44,8 @@ export class YoutubeComponent implements OnInit, AfterContentInit {
             height: '390',
             width: '640',
             videoId: 'De6uAzvOx5E',
+            allow: 'autoplay',
+            playerVars: { 'autoplay': 1, 'controls': 0 },
             events: {
               'onReady': onPlayerReady,
               'onStateChange': onPlayerStateChange
@@ -58,49 +60,50 @@ export class YoutubeComponent implements OnInit, AfterContentInit {
     }, 200);
     let onPlayerStateChange = (event) => {
       console.log('event changed');
-      let src = 'https://www.youtube.com/embed/De6uAzvOx5E?enablejsapi=1&origin=' + this.origin + '&autoplay=1&widgetid=3&controls=0&cc_load_policy=3&iv_load_policy=3&showinfo=0&modestbranding=1&rel=0&autohide=0';
-    if (event.data === -1) {
-      let iframe = document.getElementsByTagName('iframe')[0];
+    //   let src = 'https://www.youtube.com/embed/De6uAzvOx5E?enablejsapi=1&origin=' + this.origin + '&autoplay=1&widgetid=3&controls=0&cc_load_policy=3&iv_load_policy=3&showinfo=0&modestbranding=1&rel=0&autohide=0';
+    // if (event.data === -1) {
+    //   let iframe = document.getElementsByTagName('iframe')[0];
 
-      iframe.setAttribute('style', 'width:640; height:360');
-      //iframe.setAttribute('class', 'video');
-      iframe.setAttribute("src", src);
+    //   iframe.setAttribute('style', 'width:640; height:360');
+    //   //iframe.setAttribute('class', 'video');
+    //   iframe.setAttribute("src", src);
       //this.player.playVideo();
 
-    }
+    //}
     }
     let onPlayerReady = (event) => {
+      //this.player.playVideo();
       console.log('real onready');
       // console.log(event.target.a.contentWindow);
       // console.log(event.target.a);
       // console.log(event.target);
-      let myTarget = event.target.a;
-      //setTimeout(() => { this.myplayer.playVideo() }, 5000);
-      let iframe = document.getElementsByTagName('iframe')[0];
-      var youtube_command = JSON.stringify({ event: 'command', func: 'pauseVideo' });
+      // let myTarget = event.target.a;
+      // //setTimeout(() => { this.myplayer.playVideo() }, 5000);
+      // let iframe = document.getElementsByTagName('iframe')[0];
+      // var youtube_command = JSON.stringify({ event: 'command', func: 'pauseVideo' });
 
-      iframe.contentWindow.postMessage(youtube_command, '*');
-      console.log(event.target.getPlayerState());
-      // const player = _window.document.getElementById('player') as HTMLIFrameElement;
-      setTimeout(()=>{
-        let iframe1 = document.getElementsByTagName('iframe')[0];
-        var youtube_command1 = JSON.stringify({ event: 'command', func: 'playVideo' });
-        iframe1.contentWindow.postMessage(youtube_command1, '*');
-      },1000);
-      let playing = setInterval(()=>{
-        let iframe2 = document.getElementsByTagName('iframe')[0];
-        this.state = event.target.getPlayerState();
-        console.log(this.state);
-        if(this.state === 0){
-          clearInterval(playing);
-        }
-      },1000);
-      // var myplayer = player.contentWindow;
-      //event.target.a.contentWindow.postMessage(youtube_command1, '*');
-      console.log(event.target.getPlayerState());
+      // iframe.contentWindow.postMessage(youtube_command, '*');
+      // console.log(event.target.getPlayerState());
+      // // const player = _window.document.getElementById('player') as HTMLIFrameElement;
+      // setTimeout(()=>{
+      //   let iframe1 = document.getElementsByTagName('iframe')[0];
+      //   var youtube_command1 = JSON.stringify({ event: 'command', func: 'playVideo' });
+      //   iframe1.contentWindow.postMessage(youtube_command1, '*');
+      // },1000);
+      // let playing = setInterval(()=>{
+      //   let iframe2 = document.getElementsByTagName('iframe')[0];
+      //   this.state = event.target.getPlayerState();
+      //   console.log(this.state);
+      //   if(this.state === 0){
+      //     clearInterval(playing);
+      //   }
+      // },1000);
+      // // var myplayer = player.contentWindow;
+      // //event.target.a.contentWindow.postMessage(youtube_command1, '*');
+      // console.log(event.target.getPlayerState());
       
       
-      console.log(event.target.getPlayerState());
+      // console.log(event.target.getPlayerState());
       // event.target.pauseVideo();
       //console.log('final: ',event.target.playVideo().playVideo());
       //event.target.playVideo();

@@ -1,0 +1,27 @@
+.title, .text{
+    margin: 10px 20px;
+    color:white;
+}
+.upload{
+    border: 1px white solid;
+    padding: 20px;
+    border-radius: 15px;
+    background: linear-gradient(to bottom, #1e5799 0%,#207cca 97%,#207cca 97%,#207cca 97%,#207cca 98%,#207cca 98%,#207cca 98%,#207cca 98%,#207cca 99%,#207cca 99%,#2989d8 100%,#2989d8 100%,#7db9e8 100%,#207cca 100%,#207cca 100%,#207cca 100%);
+    width: 35%;
+    min-width: 250px;
+    max-width: 400px;
+
+}
+.content-container{
+    border: 1px white solid;
+    padding: 0 20px 20px 20px;
+    border-radius: 15px;
+    margin: 20px;
+}
+.title{
+    position: relative;
+    top: -25px;
+    background-color: #303030;
+    width: 165px;
+    text-align: center;
+}

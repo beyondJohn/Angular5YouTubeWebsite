@@ -19,7 +19,6 @@ import { TwitchComponent } from './twitch/twitch.component';
 
 import { CacheFactory } from 'cachefactory';
 import { ModalService } from './services/modal.service';
-import { ScanService } from './services/scan.service';
 import { CacheService } from './services/cache.service';
 import { RunService } from './services/run.service';
 import { LoginService } from './services/login.service';
@@ -27,11 +26,14 @@ import { MyHttpLogInterceptorService } from './services/my-http-log-interceptor.
 import { WindowRef } from './services/window-ref.service';
 import { TwitchPlayerService } from './services/twitch-player.service';
 import { BehaviorSubjectService } from './services/behavior-subject.service';
+import { YoutubeService } from './services/youtube.service';
+import { FileUploadService } from './services/file-upload.service';
 
 import { Config } from './config';
 import { TestSwingComponent } from './test-swing/test-swing.component';
 import { YoutubeComponent } from './youtube/youtube.component';
-import { YoutubeService } from './services/youtube.service'; 
+import { CmsComponent } from './cms/cms.component';
+import { FileUploadComponent } from './file-upload/file-upload.component'; 
 
 
 const appRoutes: Routes = [
@@ -67,13 +69,18 @@ const appRoutes: Routes = [
   },
   {
     path: 'youtube',
-    component: YoutubeComponent,
+    component: IndexComponent,
     data: { title: 'Youtube', animation: 'youtube' }
   },
   {
     path: 'test',
     component: TestSwingComponent,
     data: { title: 'Test', animation: 'test' }
+  },
+  {
+    path: 'cms',
+    component: CmsComponent,
+    data: { title: 'CMS', animation: 'cms' }
   },
   {
     path: ':src',
@@ -98,7 +105,9 @@ const appRoutes: Routes = [
     ChannelsComponent,
     TwitchComponent,
     TestSwingComponent,
-    YoutubeComponent
+    YoutubeComponent,
+    CmsComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -112,10 +121,10 @@ const appRoutes: Routes = [
     HttpClientModule
   ],
   providers: [
-    ScanService, ModalService, NgbActiveModal, CacheFactory, CacheService, RunService
+    ModalService, NgbActiveModal, CacheFactory, CacheService, RunService
   ,LoginService, Config, HttpClient, { provide: HTTP_INTERCEPTORS, useClass: MyHttpLogInterceptorService, multi: true }
   ,WindowRef, TwitchPlayerService, {provide: LocationStrategy, useClass: HashLocationStrategy}
-  ,BehaviorSubjectService, YoutubeService
+  ,BehaviorSubjectService, YoutubeService, FileUploadService
 ],
   entryComponents:[ ErrormodalComponent ],
   bootstrap: [AppComponent]

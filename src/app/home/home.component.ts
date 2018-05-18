@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ScanService } from '../services/scan.service';
 import { ErrormodalComponent } from '../errormodal/errormodal.component';
 import { NgbModal, NgbActiveModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { CacheService } from '../services/cache.service';
@@ -14,7 +13,6 @@ import { CacheFactory } from 'cachefactory';
 export class HomeComponent implements OnInit {
 
   constructor(
-    private _scan: ScanService,
     private _activemodal: NgbActiveModal,
     private _modalService: NgbModal,
     private _router: Router,
@@ -34,14 +32,12 @@ export class HomeComponent implements OnInit {
   }
 
   showmodal() {
-    this._scan.showError();
   }
   showmodal1() {
     this._modalService.open(ErrormodalComponent).result.then((result) => {
       console.log('service object listening for close event');
 
     }, (reason) => {
-
     });;
   }
   back() {

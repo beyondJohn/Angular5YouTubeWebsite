@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ScanService } from '../services/scan.service';
 import { ErrormodalComponent } from '../errormodal/errormodal.component';
 import { CacheService } from '../services/cache.service';
 import { CacheFactory } from 'cachefactory';
@@ -13,7 +12,6 @@ import { CacheFactory } from 'cachefactory';
 export class AwayComponent implements OnInit {
 
   constructor(
-    private _scan: ScanService,
     private _router: Router,
     private _cache: CacheFactory,
     private _cacheS: CacheService
@@ -32,7 +30,7 @@ export class AwayComponent implements OnInit {
       this.check1 = "stophere to test cache, should have home cache avaiable";
   }
   showmodal() {
-    this._scan.showError();
+    
   }
   back() {
     this._router.navigate(['/home']);
